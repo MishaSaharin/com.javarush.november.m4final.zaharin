@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro https://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <!-- try to understand, change it fo my tables-->
+
+
+    <changeSet id="2224_06_02-19-00" author="Misha Zaharin">
+        <insert tableName="users">
+            <column name="login">Yura</column>
+            <column name="password">123456789</column>
+        </insert>
+        <insert tableName="users">
+            <column name="login">Ira</column>
+            <column name="password">qwerty</column>
+        </insert>
+        <insert tableName="users">
+            <column name="login">Tony Soprano</column>
+            <column name="password">killemall</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
