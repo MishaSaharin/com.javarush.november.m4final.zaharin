@@ -1,8 +1,4 @@
-package com.javarush.november.domain;
-
-
-import com.sun.istack.NotNull;
-import org.hibernate.annotations.ColumnDefault;
+package com.javarush.november.entity;
 
 import javax.persistence.*;
 
@@ -10,22 +6,20 @@ import javax.persistence.*;
 @Table(schema = "world", name = "city")
 public class City {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "name", length = 35)
+
+    @Column(name = "name")
     private String name;
-    @NotNull
+
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "district", length = 20)
+
+    @Column(name = "district")
     private String district;
-    @NotNull
-    @ColumnDefault("0")
+
     @Column(name = "population")
     private Integer population;
 

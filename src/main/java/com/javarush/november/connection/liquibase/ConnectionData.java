@@ -1,4 +1,4 @@
-package com.javarush.november.service;
+package com.javarush.november.connection.liquibase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,6 @@ public class ConnectionData {
     public static final String DB_PASSWORD = "root";
 
     public static Connection getConnection() throws SQLException {
-
         return DriverManager.getConnection(
                 DB_URL,
                 DB_USER,

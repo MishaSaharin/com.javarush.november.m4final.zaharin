@@ -1,7 +1,4 @@
-package com.javarush.november.domain;
-
-import com.sun.istack.NotNull;
-import org.hibernate.annotations.ColumnDefault;
+package com.javarush.november.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,62 +8,56 @@ import java.util.Set;
 @Table(schema = "world", name = "country")
 public class Country {
     @Id
-    @NotNull
-    @ColumnDefault("0")
+    @Column(name = "id")
     private Integer id;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "code", length = 3)
+
+    @Column(name = "code")
     private String code;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "code_2", length = 2)
-    private String codeSecond;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "name", length = 52)
+
+    @Column(name = "code_2")
+    private String alternativeCode;
+
+    @Column(name = "name")
     private String name;
-    @NotNull
-    @Enumerated(value = EnumType.ORDINAL)
+
     @Column(name = "continent")
-    @ColumnDefault("0")
+    @Enumerated(EnumType.ORDINAL)
     private Continent continent;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "region", length = 26)
+
+    @Column(name = "region")
     private String region;
-    @NotNull
-    @ColumnDefault("0.00")
+
     @Column(name = "surface_area")
     private BigDecimal surfaceArea;
+
     @Column(name = "indep_year")
-    @ColumnDefault("null")
     private Short independenceYear;
-    @NotNull
+
     @Column(name = "population")
-    @ColumnDefault("0")
     private Integer population;
-    @ColumnDefault("null")
+
+    @Column(name = "life_expectancy")
+    private BigDecimal lifeExpectancy;
+
     @Column(name = "gnp")
     private BigDecimal gnp;
-    @ColumnDefault("null")
+
     @Column(name = "gnpo_id")
     private BigDecimal gnpoId;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "local_name", length = 45)
+
+    @Column(name = "local_name")
     private String localName;
-    @NotNull
-    @ColumnDefault("''")
-    @Column(name = "government_form", length = 45)
+
+    @Column(name = "government_form")
     private String governmentForm;
-    @ColumnDefault("null")
-    @Column(name = "head_of_state", length = 60)
+
+    @Column(name = "head_of_state")
     private String headOfState;
-    @OneToOne
-    @ColumnDefault("null")
+
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital")
-    private City capital;
+    private City city;
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     private Set<CountryLanguage> languages;
@@ -90,12 +81,12 @@ public class Country {
         this.code = code;
     }
 
-    public String getCodeSecond() {
-        return codeSecond;
+    public String getAlternativeCode() {
+        return alternativeCode;
     }
 
-    public void setCodeSecond(String codeSecond) {
-        this.codeSecond = codeSecond;
+    public void setAlternativeCode(String code2) {
+        this.alternativeCode = code2;
     }
 
     public String getName() {
@@ -134,8 +125,8 @@ public class Country {
         return independenceYear;
     }
 
-    public void setIndependenceYear(Short independenceYear) {
-        this.independenceYear = independenceYear;
+    public void setIndependenceYear(Short indepYear) {
+        this.independenceYear = indepYear;
     }
 
     public Integer getPopulation() {
@@ -144,6 +135,14 @@ public class Country {
 
     public void setPopulation(Integer population) {
         this.population = population;
+    }
+
+    public BigDecimal getLifeExpectancy() {
+        return lifeExpectancy;
+    }
+
+    public void setLifeExpectancy(BigDecimal lifeExpectancy) {
+        this.lifeExpectancy = lifeExpectancy;
     }
 
     public BigDecimal getGnp() {
@@ -186,19 +185,19 @@ public class Country {
         this.headOfState = headOfState;
     }
 
-    public City getCapital() {
-        return capital;
+    public City getCity() {
+        return city;
     }
 
-    public void setCapital(City capital) {
-        this.capital = capital;
+    public void setCity(City capital) {
+        this.city = capital;
     }
 
     public Set<CountryLanguage> getLanguages() {
         return languages;
     }
 
-    public void setLanguages(Set<CountryLanguage> languages) {
-        this.languages = languages;
+    public void setLanguages(Set<CountryLanguage> countryLanguages) {
+        this.languages = countryLanguages;
     }
 }

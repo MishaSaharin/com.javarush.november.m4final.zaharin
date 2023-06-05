@@ -1,11 +1,11 @@
-package com.javarush.november.domain;
+package com.javarush.november.entity;
 
 public enum Continent {
     ASIA,
-    EUROPE,
+    EUROPA,
     NORTH_AMERICA,
     AFRICA,
     OCEANIA,
     ANTARCTICA,
-    SOUTH_AMERICA
+    SOUTH_AMERICA,
 }

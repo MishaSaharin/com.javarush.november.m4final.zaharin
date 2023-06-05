@@ -1,7 +1,5 @@
-package com.javarush.november.domain;
+package com.javarush.november.entity;
 
-import com.sun.istack.internal.NotNull;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -12,23 +10,21 @@ import java.math.BigDecimal;
 public class CountryLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @NotNull
+
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-    @NotNull
-    @Column(name = "language", length = 30)
-    @ColumnDefault("''")
+
+    @Column(name = "language")
     private String language;
-    @NotNull
+
     @Column(name = "is_official", columnDefinition = "BIT")
-    @ColumnDefault("false")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isOfficial;
-    @NotNull
+
     @Column(name = "percentage")
-    @ColumnDefault("0.0")
     private BigDecimal percentage;
 
     public CountryLanguage() {

@@ -11,15 +11,15 @@
 
     <!-- try to understand, change it fo my tables-->
 
-    <changeSet id="2023_may_23-20_28" author="Yuriy Syrovatko">
-        <createTable tableName="users">
+    <changeSet id="11" author="m4final">
+        <createTable tableName="city">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="login" type="varchar(128)">
+            <column name="name" type="varchar(128)">
                 <constraints unique="true"/>
             </column>
-            <column name="password" type="varchar(128)"></column>
+            <column name="district" type="varchar(128)"></column>
         </createTable>
     </changeSet>
 

@@ -9,21 +9,20 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro https://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <!-- try to understand, change it fo my tables-->
-
-
-    <changeSet id="2224_06_02-19-00" author="Misha Zaharin">
-        <insert tableName="users">
-            <column name="login">Yura</column>
-            <column name="password">123456789</column>
+    <changeSet id="1" author="m4final">
+        <insert tableName="country_language">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="language">123456789</column>
         </insert>
-        <insert tableName="users">
-            <column name="login">Ira</column>
-            <column name="password">qwerty</column>
+        <insert tableName="city">
+            <column name="">Ufa</column>
+            <column name=" ">njh</column>
         </insert>
-        <insert tableName="users">
-            <column name="login">Tony Soprano</column>
-            <column name="password">killemall</column>
+        <insert tableName="language">
+            <column name=" "> hjh</column>
+            <column name=" "> deg</column>
         </insert>
     </changeSet>
 

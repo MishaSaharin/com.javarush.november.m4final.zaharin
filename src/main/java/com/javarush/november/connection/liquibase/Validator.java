@@ -1,4 +1,4 @@
-package com.javarush.november.service;
+package com.javarush.november.connection.liquibase;
 
 import liquibase.Contexts;
 import liquibase.LabelExpression;
@@ -18,15 +18,14 @@ public class Validator {
     public void getConnection() {
 
         Map<String, Object> config = new HashMap<>();
-
         try (Connection connection = ConnectionData.getConnection()) {
-            updateDateBase(config, connection);
+            createConnection(config, connection);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static void updateDateBase(Map<String, Object> config, Connection connection) {
+    private static void createConnection(Map<String, Object> config, Connection connection) {
         try {
             Scope.child(config, () -> {
                 Database database = DatabaseFactory
