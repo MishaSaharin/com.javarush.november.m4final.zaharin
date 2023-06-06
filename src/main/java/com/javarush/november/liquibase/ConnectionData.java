@@ -1,4 +1,4 @@
-package com.javarush.november.connection.liquibase;
+package com.javarush.november.liquibase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

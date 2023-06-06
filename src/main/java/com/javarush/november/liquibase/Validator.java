@@ -1,4 +1,4 @@
-package com.javarush.november.connection.liquibase;
+package com.javarush.november.liquibase;
 
 import liquibase.Contexts;
 import liquibase.LabelExpression;
