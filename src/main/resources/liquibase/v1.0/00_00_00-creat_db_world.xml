@@ -9,7 +9,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro https://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <include file="v1.0/00_00_00-creat_db_world.xml" relativeToChangelogFile="true"/>
-    <!--     file="v1.0/2023_may_23-20_28-add_table_users.xml"-->
-<!--    <include file=" path to file folder/file.xml " relativeToChangelogFile="true"/>-->
+    <changeSet id="00_00_00-creat_db_world" author="m4final">
+        <sqlFile path="liquibase/dump-hibernate-final.sql"/>
+    </changeSet>
 </databaseChangeLog>

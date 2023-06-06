@@ -9,18 +9,17 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro https://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <!-- try to understand, change it fo my tables-->
-
     <changeSet id="11" author="m4final">
         <createTable tableName="city">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="varchar(128)">
+            <column name="name" type="varchar(35)">
                 <constraints unique="true"/>
             </column>
             <column name="district" type="varchar(128)"></column>
         </createTable>
+        <
     </changeSet>
 
 </databaseChangeLog>
