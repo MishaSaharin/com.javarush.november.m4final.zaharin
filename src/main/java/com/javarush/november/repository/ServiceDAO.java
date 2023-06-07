@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.javarush.november.connection.RedisClientSessionFactory;
 import com.javarush.november.connection.RelationalDbSessionFactory;
+import com.javarush.november.connection.SessionProvider;
 import com.javarush.november.entity.City;
 import com.javarush.november.entity.Country;
 import com.javarush.november.entity.CountryLanguage;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
 
-public class ServiceDAO {
+public class ServiceDAO implements SessionProvider {
     private final SessionFactory sessionFactory;
     private final RedisClient redisClient;
     private final ObjectMapper objectMapper;
@@ -32,7 +33,7 @@ public class ServiceDAO {
     private final CountryDAO countryDAO;
 
     public ServiceDAO() {
-        sessionFactory = new RelationalDbSessionFactory().getPrepareRelationalDb();
+        sessionFactory = new RelationalDbSessionFactory().getSessionFactory();
         cityDAO = new CityDAO(sessionFactory);
         countryDAO = new CountryDAO(sessionFactory);
         redisClient = RedisClientSessionFactory.prepareRedisClient();
@@ -129,6 +130,7 @@ public class ServiceDAO {
         }
     }
 
+    @Override
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
