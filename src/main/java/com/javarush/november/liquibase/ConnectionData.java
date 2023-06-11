@@ -3,6 +3,7 @@ package com.javarush.november.liquibase;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConnectionData {
     public static final String DB_URL = "jdbc:mysql://localhost:3306/world";

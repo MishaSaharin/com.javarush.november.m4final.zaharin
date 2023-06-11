@@ -3,7 +3,7 @@ package com.javarush.november;
 import com.javarush.november.liquibase.Validator;
 import com.javarush.november.entity.City;
 import com.javarush.november.redis.CityCountry;
-import com.javarush.november.repository.ServiceDAO;
+import com.javarush.november.service.ServiceDAO;
 
 import java.time.Duration;
 import java.time.Instant;

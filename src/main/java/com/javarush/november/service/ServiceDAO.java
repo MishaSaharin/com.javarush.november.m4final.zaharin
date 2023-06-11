@@ -1,8 +1,7 @@
-package com.javarush.november.repository;
+package com.javarush.november.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.javarush.november.connection.RedisClientSessionFactory;
 import com.javarush.november.connection.RelationalDbSessionFactory;
 import com.javarush.november.connection.SessionProvider;
@@ -11,6 +10,8 @@ import com.javarush.november.entity.Country;
 import com.javarush.november.entity.CountryLanguage;
 import com.javarush.november.redis.CityCountry;
 import com.javarush.november.redis.Language;
+import com.javarush.november.repository.CityDAO;
+import com.javarush.november.repository.CountryDAO;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
@@ -19,7 +20,6 @@ import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -44,7 +44,7 @@ public class ServiceDAO implements SessionProvider {
         try (Session session = serviceDao.sessionFactory.getCurrentSession()) {
             List<City> allCities = new ArrayList<>();
             session.beginTransaction();
-            List<Country> countries = serviceDao.countryDAO.findAll();
+            List<Country> countries = serviceDao.countryDAO.getAll();
             int totalCount = serviceDao.cityDAO.getTotalCount();
             int step = 500;
             for (int i = 0; i < totalCount; i += step) {
@@ -100,8 +100,8 @@ public class ServiceDAO implements SessionProvider {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             for (Integer id : ids) {
-                Optional<City> cityOptional = cityDAO.getCityById(id);
-                Set<CountryLanguage> languages = cityOptional.get().getCountry().getLanguages();
+                City city = cityDAO.getById(id);
+                Set<CountryLanguage> languages = city.getCountry().getLanguages();
             }
             session.getTransaction().commit();
         }

@@ -1,42 +1,21 @@
 package com.javarush.november.repository;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
-
 import java.util.List;
 
-public abstract class GenericDAO<T> {
-    private final SessionFactory sessionFactory;
-    private final Class<T> aClass;
+public interface GenericDAO<T> {
+    T getById(int id);
 
-    protected GenericDAO(final Class<T> aClass, SessionFactory sessionFactory) {
-        this.aClass = aClass;
-        this.sessionFactory = sessionFactory;
-    }
+    List<T> getItems(int offset, int count);
 
-    public List<T> findAll() {
-        String query = "select c from " + aClass.getName() + " as c join fetch c.languages";
-        return getCurrentSession()
-                .createQuery(query, aClass)
-                .list();
-    }
+    List<T> getAll();
 
-    public List<T> getItems(int offset, int limit) {
-        Query<T> query = getCurrentSession()
-                .createQuery("from " + aClass.getName(), aClass)
-                .setFirstResult(offset)
-                .setMaxResults(limit);
-        return query.list();
-    }
+    int getTotalCount();
 
-    public int getTotalCount() {
-        Query<Long> query = getCurrentSession()
-                .createQuery("select count(c) from " + aClass.getName() + " c", Long.class);
-        return Math.toIntExact(query.uniqueResult());
-    }
+    void create(T entity);
 
-    protected Session getCurrentSession() {
-        return sessionFactory.getCurrentSession();
-    }
+    void update(T entity);
+
+    void delete(T entity);
+
+    void deleteById(final int entityId);
 }
